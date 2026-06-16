@@ -166,7 +166,7 @@ function renderCards() {
   if (filtered.length === 0) {
     techContainer.innerHTML = `
       <div class="col-span-full flex flex-col items-center justify-center py-16 px-4 text-center bg-white rounded-3xl border border-gray-100">
-        <div class="bg-blue-50 text-blue-500 w-16 h-16 rounded-full flex items-center justify-center mb-4 text-2xl">
+        <div class="bg-red-50 text-red-500 w-16 h-16 rounded-full flex items-center justify-center mb-4 text-2xl">
           <i class="fa-solid fa-user-slash"></i>
         </div>
         <h3 class="text-gray-800 font-semibold text-lg mb-1">No encontramos resultados</h3>
@@ -195,7 +195,7 @@ function renderCards() {
               <i class="fa-solid fa-location-dot text-red-400 mr-1"></i>${tech.location.split(',')[0]}
             </span>
           </div>
-          <p class="text-blue-600 font-semibold text-xs truncate mt-0.5">${tech.specialty}</p>
+          <p class="text-red-600 font-semibold text-xs truncate mt-0.5">${tech.specialty}</p>
           
           <div class="flex items-center space-x-1.5 mt-1">
             <span class="text-amber-500 font-extrabold text-xs">${tech.rating.toFixed(1)}</span>
@@ -226,7 +226,7 @@ function renderCards() {
           <button onclick="openProfileSheet(${tech.id})" class="btn-touch px-4 py-2.5 rounded-xl border border-gray-200 text-gray-700 font-bold text-xs bg-gray-50 hover:bg-gray-100 transition-all">
             Ficha
           </button>
-          <button onclick="openBookingSheet(${tech.id})" class="btn-touch px-4 py-2.5 rounded-xl bg-blue-600 text-white font-extrabold text-xs hover:bg-blue-700 transition-all shadow-md shadow-blue-600/10">
+          <button onclick="openBookingSheet(${tech.id})" class="btn-touch px-4 py-2.5 rounded-xl bg-red-600 text-white font-extrabold text-xs hover:bg-red-700 transition-all shadow-md shadow-red-600/10">
             Reservar
           </button>
         </div>
@@ -260,12 +260,12 @@ clearSearchBtn.addEventListener("click", () => {
 categoryButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     categoryButtons.forEach(b => {
-      b.classList.remove("bg-blue-600", "text-white", "shadow-active", "scale-105");
+      b.classList.remove("bg-red-600", "text-white", "shadow-active", "scale-105");
       b.classList.add("bg-white", "text-gray-600", "border-gray-100");
     });
 
     btn.classList.remove("bg-white", "text-gray-600", "border-gray-100");
-    btn.classList.add("bg-blue-600", "text-white", "shadow-active", "scale-105");
+    btn.classList.add("bg-red-600", "text-white", "shadow-active", "scale-105");
 
     selectedCategory = btn.getAttribute("data-category");
     btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
@@ -315,10 +315,10 @@ function showSection(sectionId) {
     
     if (target === targetSection || isProfileMatch) {
       nav.classList.remove("text-gray-400");
-      nav.classList.add("text-blue-600");
+      nav.classList.add("text-red-600");
       nav.querySelector(".nav-dot")?.classList.remove("scale-0");
     } else {
-      nav.classList.remove("text-blue-600");
+      nav.classList.remove("text-red-600");
       nav.classList.add("text-gray-400");
       nav.querySelector(".nav-dot")?.classList.add("scale-0");
     }
@@ -349,12 +349,12 @@ function toggleAuthTab(tab) {
   const registerContainer = document.getElementById("register-container");
 
   if (tab === "login") {
-    tabLogin.className = "flex-1 pb-3 text-center border-b-2 border-blue-600 font-extrabold text-sm text-blue-600 transition-all";
+    tabLogin.className = "flex-1 pb-3 text-center border-b-2 border-red-600 font-extrabold text-sm text-red-600 transition-all";
     tabRegister.className = "flex-1 pb-3 text-center border-b-2 border-transparent font-extrabold text-sm text-gray-400 hover:text-gray-600 transition-all";
     loginForm.classList.remove("hidden");
     registerContainer.classList.add("hidden");
   } else {
-    tabRegister.className = "flex-1 pb-3 text-center border-b-2 border-blue-600 font-extrabold text-sm text-blue-600 transition-all";
+    tabRegister.className = "flex-1 pb-3 text-center border-b-2 border-red-600 font-extrabold text-sm text-red-600 transition-all";
     tabLogin.className = "flex-1 pb-3 text-center border-b-2 border-transparent font-extrabold text-sm text-gray-400 hover:text-gray-600 transition-all";
     loginForm.classList.add("hidden");
     registerContainer.classList.remove("hidden");
@@ -377,14 +377,14 @@ function selectRegisterRole(role) {
   ];
 
   if (role === "client") {
-    roleClient.className = "btn-touch border-2 border-blue-600 bg-blue-50 text-blue-600 font-bold text-xs py-3 rounded-xl flex items-center justify-center space-x-1.5";
+    roleClient.className = "btn-touch border-2 border-red-600 bg-red-50 text-red-600 font-bold text-xs py-3 rounded-xl flex items-center justify-center space-x-1.5";
     roleTech.className = "btn-touch border border-gray-200 bg-white text-gray-600 font-bold text-xs py-3 rounded-xl flex items-center justify-center space-x-1.5";
     techFields.classList.add("hidden");
     
     // Quitar requerimientos de formulario
     reqFields.forEach(id => document.getElementById(id).removeAttribute("required"));
   } else {
-    roleTech.className = "btn-touch border-2 border-blue-600 bg-blue-50 text-blue-600 font-bold text-xs py-3 rounded-xl flex items-center justify-center space-x-1.5";
+    roleTech.className = "btn-touch border-2 border-red-600 bg-red-50 text-red-600 font-bold text-xs py-3 rounded-xl flex items-center justify-center space-x-1.5";
     roleClient.className = "btn-touch border border-gray-200 bg-white text-gray-600 font-bold text-xs py-3 rounded-xl flex items-center justify-center space-x-1.5";
     techFields.classList.remove("hidden");
     
@@ -562,7 +562,7 @@ function showToast(message, type = "success") {
     toast.innerHTML = `<i class="fa-solid fa-circle-check text-base"></i> <span>${message}</span>`;
   } else if (type === "info") {
     toast.classList.add("bg-gray-800");
-    toast.innerHTML = `<i class="fa-solid fa-circle-info text-base text-blue-400"></i> <span>${message}</span>`;
+    toast.innerHTML = `<i class="fa-solid fa-circle-info text-base text-red-400"></i> <span>${message}</span>`;
   }
 
   document.body.appendChild(toast);
@@ -592,7 +592,7 @@ function openProfileSheet(id) {
     <div class="flex flex-col md:flex-row md:items-start md:space-x-5 mb-5">
       <img src="${tech.photo}" alt="${tech.name}" class="w-20 h-20 rounded-2xl object-cover border-2 border-white shadow-lg mx-auto md:mx-0">
       <div class="text-center md:text-left mt-3 md:mt-0">
-        <span class="bg-blue-50 text-blue-600 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-md">
+        <span class="bg-red-50 text-red-600 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-md">
           ${tech.category.toUpperCase().replace('-', ' ')}
         </span>
         <h2 class="text-xl font-extrabold text-gray-900 mt-1">${tech.name}</h2>
@@ -638,10 +638,10 @@ function openProfileSheet(id) {
     <!-- Botones de Acción -->
     <div class="flex space-x-3 safe-bottom">
       <a href="tel:${tech.phone || '555-555'}" class="btn-touch flex-1 py-3.5 rounded-2xl border border-gray-200 text-gray-700 font-bold text-xs bg-white text-center flex items-center justify-center space-x-2 shadow-sm">
-        <i class="fa-solid fa-phone text-blue-500"></i>
+        <i class="fa-solid fa-phone text-red-500"></i>
         <span>Llamar</span>
       </a>
-      <button onclick="openBookingSheet(${tech.id})" class="btn-touch flex-[2] py-3.5 rounded-2xl bg-blue-600 text-white font-bold text-xs hover:bg-blue-700 shadow-lg shadow-blue-600/20 text-center flex items-center justify-center space-x-2">
+      <button onclick="openBookingSheet(${tech.id})" class="btn-touch flex-[2] py-3.5 rounded-2xl bg-red-600 text-white font-bold text-xs hover:bg-red-700 shadow-lg shadow-red-600/20 text-center flex items-center justify-center space-x-2">
         <i class="fa-solid fa-calendar-check"></i>
         <span>Reservar Turno</span>
       </button>
@@ -689,7 +689,7 @@ function openBookingSheet(id) {
       <span class="text-gray-400 text-[10px] font-bold uppercase tracking-wider block mb-2">Selecciona la Fecha</span>
       <div class="grid grid-cols-4 gap-2">
         ${days.map((day, idx) => `
-          <button onclick="selectDate(this, '${day.fullDate}')" class="date-btn btn-touch border ${idx === 0 ? 'border-blue-600 bg-blue-50 text-blue-600' : 'border-gray-200 bg-white text-gray-600'} rounded-xl py-3 text-center flex flex-col items-center justify-center">
+          <button onclick="selectDate(this, '${day.fullDate}')" class="date-btn btn-touch border ${idx === 0 ? 'border-red-600 bg-red-50 text-red-600' : 'border-gray-200 bg-white text-gray-600'} rounded-xl py-3 text-center flex flex-col items-center justify-center">
             <span class="text-[10px] font-medium uppercase opacity-75">${day.dayName}</span>
             <span class="text-base font-extrabold mt-0.5">${day.dateStr}</span>
           </button>
@@ -701,7 +701,7 @@ function openBookingSheet(id) {
     <div class="mb-6">
       <span class="text-gray-400 text-[10px] font-bold uppercase tracking-wider block mb-2">Selecciona el Horario</span>
       <div class="grid grid-cols-3 gap-2">
-        <button onclick="selectTime(this, '09:00 - Mañana')" class="time-btn btn-touch border border-blue-600 bg-blue-50 text-blue-600 rounded-xl py-2.5 text-xs font-bold text-center">09:00 AM</button>
+        <button onclick="selectTime(this, '09:00 - Mañana')" class="time-btn btn-touch border border-red-600 bg-red-50 text-red-600 rounded-xl py-2.5 text-xs font-bold text-center">09:00 AM</button>
         <button onclick="selectTime(this, '14:30 - Tarde')" class="time-btn btn-touch border border-gray-200 bg-white text-gray-600 rounded-xl py-2.5 text-xs font-bold text-center">02:30 PM</button>
         <button onclick="selectTime(this, '17:00 - Tarde')" class="time-btn btn-touch border border-gray-200 bg-white text-gray-600 rounded-xl py-2.5 text-xs font-bold text-center">05:00 PM</button>
       </div>
@@ -737,21 +737,21 @@ let selectedBookingTime = "09:00 - Mañana";
 function selectDate(element, dateVal) {
   selectedBookingDate = dateVal;
   document.querySelectorAll('.date-btn').forEach(btn => {
-    btn.classList.remove('border-blue-600', 'bg-blue-50', 'text-blue-600');
+    btn.classList.remove('border-red-600', 'bg-red-50', 'text-red-600');
     btn.classList.add('border-gray-200', 'bg-white', 'text-gray-600');
   });
   element.classList.remove('border-gray-200', 'bg-white', 'text-gray-600');
-  element.classList.add('border-blue-600', 'bg-blue-50', 'text-blue-600');
+  element.classList.add('border-red-600', 'bg-red-50', 'text-red-600');
 }
 
 function selectTime(element, timeVal) {
   selectedBookingTime = timeVal;
   document.querySelectorAll('.time-btn').forEach(btn => {
-    btn.classList.remove('border-blue-600', 'bg-blue-50', 'text-blue-600');
+    btn.classList.remove('border-red-600', 'bg-red-50', 'text-red-600');
     btn.classList.add('border-gray-200', 'bg-white', 'text-gray-600');
   });
   element.classList.remove('border-gray-200', 'bg-white', 'text-gray-600');
-  element.classList.add('border-blue-600', 'bg-blue-50', 'text-blue-600');
+  element.classList.add('border-red-600', 'bg-red-50', 'text-red-600');
 }
 
 // Confirmar y simular pantalla de éxito
@@ -773,7 +773,7 @@ function confirmBooking() {
         </div>
         <div class="flex justify-between border-b border-gray-100 pb-2">
           <span class="font-semibold text-gray-400">Servicio</span>
-          <span class="text-blue-600 font-semibold">${currentSelectedTech.specialty}</span>
+          <span class="text-red-600 font-semibold">${currentSelectedTech.specialty}</span>
         </div>
         <div class="flex justify-between border-b border-gray-100 pb-2">
           <span class="font-semibold text-gray-400">Fecha y Hora</span>

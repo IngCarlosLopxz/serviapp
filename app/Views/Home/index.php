@@ -2,10 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- Viewport optimizado para teléfonos móviles (desactiva zoom accidental para una experiencia nativa) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  
-  <title>ServiYA - Servicios y Soporte al Instante</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <title><?= $title?></title>
   
   <!-- Tailwind CSS para estilos rápidos y livianos -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,13 +13,13 @@
       theme: {
         extend: {
           colors: {
-            brand: {
-              50: '#f0f7ff',
-              100: '#e0effe',
-              500: '#0066ff',
-              600: '#0052cc',
-              700: '#003d99',
-            }
+          brand: {
+  50: '#fff0f0',
+  100: '#ffe0e0',
+  500: '#cc0000',
+  600: '#a30000',
+  700: '#7a0000',
+}
           }
         }
       }
@@ -31,7 +30,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Estilos personalizados para animaciones y UI premium -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body class="bg-slate-50 flex flex-col text-gray-800 antialiased min-h-screen">
 
@@ -41,11 +40,11 @@
       
       <!-- Logo e Identidad -->
       <div class="flex items-center space-x-3 cursor-pointer" onclick="showSection('inicio')">
-        <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-md shadow-blue-600/20">
+        <div class="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-md shadow-red-600/20">
           <i class="fa-solid fa-bolt text-lg"></i>
         </div>
         <div>
-          <span class="text-xl font-extrabold text-gray-900 tracking-tight">Servi<span class="text-blue-600">YA</span></span>
+          <span class="text-xl font-extrabold text-gray-900 tracking-tight">Servi<span class="text-red-600">App</span></span>
           <span class="hidden md:inline-block text-[9px] uppercase font-bold tracking-widest text-gray-400 border border-gray-200 px-1.5 py-0.5 rounded ml-2 align-middle">Beta</span>
         </div>
       </div>
@@ -59,15 +58,15 @@
 
       <!-- Menú de Navegación de Escritorio (Oculto en móvil) -->
       <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-gray-600">
-        <a href="#" onclick="showSection('inicio')" class="nav-link hover:text-blue-600 transition-all flex items-center space-x-1.5">
+        <a href="#" onclick="showSection('inicio')" class="nav-link hover:text-red-600 transition-all flex items-center space-x-1.5">
           <i class="fa-solid fa-house text-xs"></i>
           <span>Inicio</span>
         </a>
-        <a href="#" onclick="showSection('categorias')" class="nav-link hover:text-blue-600 transition-all flex items-center space-x-1.5">
+        <a href="#" onclick="showSection('categorias')" class="nav-link hover:text-red-600 transition-all flex items-center space-x-1.5">
           <i class="fa-solid fa-border-all text-xs"></i>
           <span>Categorías</span>
         </a>
-        <a href="#" onclick="showSection('perfil')" class="nav-link hover:text-blue-600 transition-all flex items-center space-x-1.5">
+        <a href="#" onclick="showSection('perfil')" class="nav-link hover:text-red-600 transition-all flex items-center space-x-1.5">
           <i class="fa-solid fa-user text-xs"></i>
           <span id="desktop-profile-label">Mi Perfil</span>
         </a>
@@ -76,7 +75,7 @@
       <!-- Botón de Acción Principal y Notificaciones -->
       <div class="flex items-center space-x-3">
         <!-- Trabaja con nosotros (Solo Desktop) -->
-        <button onclick="goToRegisterTech()" class="hidden md:flex btn-touch items-center space-x-2 px-4 py-2 bg-blue-50 text-blue-600 border border-blue-100 rounded-xl font-bold text-xs hover:bg-blue-100 transition-all">
+        <button onclick="goToRegisterTech()" class="hidden md:flex btn-touch items-center space-x-2 px-4 py-2 bg-red-50 text-red-600 border border-red-100 rounded-xl font-bold text-xs hover:bg-red-100 transition-all">
           <i class="fa-solid fa-briefcase"></i>
           <span>Ofrecer mi Servicio</span>
         </button>
@@ -118,7 +117,7 @@
             type="text" 
             id="search-input" 
             placeholder="¿Qué servicio necesitas hoy?" 
-            class="w-full pl-11 pr-10 py-3.5 bg-gray-50 border border-gray-100 rounded-2xl text-sm font-semibold placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+            class="w-full pl-11 pr-10 py-3.5 bg-gray-50 border border-gray-100 rounded-2xl text-sm font-semibold placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 transition-all"
           >
           <button 
             id="clear-search-btn" 
@@ -133,7 +132,7 @@
       <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
         <div class="mb-3 flex items-center justify-between">
           <h2 class="text-xs font-extrabold text-gray-900 uppercase tracking-wider">Categorías de Servicio</h2>
-          <span onclick="showSection('categorias')" class="text-xs text-blue-600 font-bold cursor-pointer hover:underline">Ver todas</span>
+          <span onclick="showSection('categorias')" class="text-xs text-red-600 font-bold cursor-pointer hover:underline">Ver todas</span>
         </div>
         
         <!-- Contenedor Deslizable Horizontal -->
@@ -141,7 +140,7 @@
           <!-- Categoría Todos (Activa por defecto) -->
           <button 
             data-category="todos" 
-            class="category-btn btn-touch flex-shrink-0 bg-blue-600 text-white font-bold text-xs px-4 py-3 rounded-2xl flex items-center space-x-2 border border-transparent shadow-active scale-105"
+            class="category-btn btn-touch flex-shrink-0 bg-red-600 text-white font-bold text-xs px-4 py-3 rounded-2xl flex items-center space-x-2 border border-transparent shadow-active scale-105"
           >
             <i class="fa-solid fa-grid-2"></i>
             <span>Todos</span>
@@ -179,7 +178,7 @@
             data-category="baldosas" 
             class="category-btn btn-touch flex-shrink-0 bg-white text-gray-600 font-bold text-xs px-4 py-3 rounded-2xl flex items-center space-x-2 border border-gray-100 shadow-sm"
           >
-            <i class="fa-solid fa-border-all text-blue-500 text-sm"></i>
+            <i class="fa-solid fa-border-all text-red-500 text-sm"></i>
             <span>Baldosas</span>
           </button>
 
@@ -195,12 +194,12 @@
       </div>
 
       <!-- Banner Informativo (Trabaja con Nosotros en Móvil) -->
-      <div class="md:hidden bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl p-4 text-white flex items-center justify-between shadow-md">
+      <div class="md:hidden bg-gradient-to-r from-red-600 to-red-500 rounded-2xl p-4 text-white flex items-center justify-between shadow-md">
         <div>
           <h3 class="font-extrabold text-xs">¿Ofreces algún servicio técnico?</h3>
-          <p class="text-[10px] text-blue-100 mt-0.5">Regístrate gratis y llega a cientos de clientes.</p>
+          <p class="text-[10px] text-red-100 mt-0.5">Regístrate gratis y llega a cientos de clientes.</p>
         </div>
-        <button onclick="goToRegisterTech()" class="btn-touch px-3 py-2 bg-white text-blue-600 font-bold text-[10px] rounded-xl shadow">
+        <button onclick="goToRegisterTech()" class="btn-touch px-3 py-2 bg-white text-red-600 font-bold text-[10px] rounded-xl shadow">
           Ofrecer Servicio
         </button>
       </div>
@@ -265,7 +264,7 @@
 
         <!-- Baldosas -->
         <div onclick="filterByCategory('baldosas')" class="btn-touch bg-white border border-gray-100 rounded-2xl p-5 flex flex-col justify-between h-36 shadow-sm hover:shadow-md cursor-pointer transition-all">
-          <div class="w-12 h-12 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center text-xl">
+          <div class="w-12 h-12 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center text-xl">
             <i class="fa-solid fa-border-all"></i>
           </div>
           <div>
@@ -298,7 +297,7 @@
 
       <!-- Navegación entre Login y Registro -->
       <div class="flex border-b border-gray-100 mb-6">
-        <button id="tab-login" onclick="toggleAuthTab('login')" class="flex-1 pb-3 text-center border-b-2 border-blue-600 font-extrabold text-sm text-blue-600 transition-all">
+        <button id="tab-login" onclick="toggleAuthTab('login')" class="flex-1 pb-3 text-center border-b-2 border-red-600 font-extrabold text-sm text-red-600 transition-all">
           Iniciar Sesión
         </button>
         <button id="tab-register" onclick="toggleAuthTab('register')" class="flex-1 pb-3 text-center border-b-2 border-transparent font-extrabold text-sm text-gray-400 hover:text-gray-600 transition-all">
@@ -335,7 +334,7 @@
               <span class="absolute left-4 text-gray-400 text-xs">
                 <i class="fa-solid fa-envelope"></i>
               </span>
-              <input type="email" id="login-email" required placeholder="correo@ejemplo.com" class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
+              <input type="email" id="login-email" required placeholder="correo@ejemplo.com" class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
             </div>
           </div>
 
@@ -346,7 +345,7 @@
               <span class="absolute left-4 text-gray-400 text-xs">
                 <i class="fa-solid fa-lock"></i>
               </span>
-              <input type="password" id="login-password" required placeholder="••••••••" class="w-full pl-11 pr-11 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
+              <input type="password" id="login-password" required placeholder="••••••••" class="w-full pl-11 pr-11 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
               <button type="button" onclick="togglePasswordVisibility('login-password', this)" class="absolute right-4 text-gray-400 hover:text-gray-600 focus:outline-none">
                 <i class="fa-solid fa-eye"></i>
               </button>
@@ -355,13 +354,13 @@
 
           <div class="flex items-center justify-between pt-1">
             <label class="flex items-center space-x-2 cursor-pointer select-none">
-              <input type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-50 border-gray-200 rounded focus:ring-blue-500/30">
+              <input type="checkbox" class="w-4 h-4 text-red-600 bg-gray-50 border-gray-200 rounded focus:ring-red-500/30">
               <span class="text-xs text-gray-500">Recordarme</span>
             </label>
-            <a href="#" class="text-xs text-blue-600 font-bold hover:underline">¿Olvidaste tu contraseña?</a>
+            <a href="#" class="text-xs text-red-600 font-bold hover:underline">¿Olvidaste tu contraseña?</a>
           </div>
 
-          <button type="submit" class="btn-touch w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-blue-600/10 transition-all mt-4 uppercase tracking-wider">
+          <button type="submit" class="btn-touch w-full py-3.5 bg-red-600 hover:bg-red-700 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-red-600/10 transition-all mt-4 uppercase tracking-wider">
             Ingresar
           </button>
         </form>
@@ -373,7 +372,7 @@
         <div>
           <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Quiero registrarme como:</label>
           <div class="grid grid-cols-2 gap-3">
-            <button id="role-client" onclick="selectRegisterRole('client')" class="btn-touch border-2 border-blue-600 bg-blue-50 text-blue-600 font-bold text-xs py-3 rounded-xl flex items-center justify-center space-x-1.5">
+            <button id="role-client" onclick="selectRegisterRole('client')" class="btn-touch border-2 border-red-600 bg-red-50 text-red-600 font-bold text-xs py-3 rounded-xl flex items-center justify-center space-x-1.5">
               <i class="fa-solid fa-user-tie"></i>
               <span>Cliente (Contratar)</span>
             </button>
@@ -392,7 +391,7 @@
               <span class="absolute left-4 text-gray-400 text-xs">
                 <i class="fa-solid fa-user"></i>
               </span>
-              <input type="text" id="reg-name" required placeholder="Ej: Juan Pérez" class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
+              <input type="text" id="reg-name" required placeholder="Ej: Juan Pérez" class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
             </div>
           </div>
           
@@ -403,7 +402,7 @@
                 <span class="absolute left-4 text-gray-400 text-xs">
                   <i class="fa-solid fa-envelope"></i>
                 </span>
-                <input type="email" id="reg-email" required placeholder="correo@ejemplo.com" class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
+                <input type="email" id="reg-email" required placeholder="correo@ejemplo.com" class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
               </div>
             </div>
             <div>
@@ -412,7 +411,7 @@
                 <span class="absolute left-4 text-gray-400 text-xs">
                   <i class="fa-solid fa-phone"></i>
                 </span>
-                <input type="tel" id="reg-phone" required placeholder="Ej: +54 9 11 ..." class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
+                <input type="tel" id="reg-phone" required placeholder="Ej: +54 9 11 ..." class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
               </div>
             </div>
           </div>
@@ -423,7 +422,7 @@
               <span class="absolute left-4 text-gray-400 text-xs">
                 <i class="fa-solid fa-lock"></i>
               </span>
-              <input type="password" id="reg-password" required placeholder="Mínimo 6 caracteres" class="w-full pl-11 pr-11 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
+              <input type="password" id="reg-password" required placeholder="Mínimo 6 caracteres" class="w-full pl-11 pr-11 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
               <button type="button" onclick="togglePasswordVisibility('reg-password', this)" class="absolute right-4 text-gray-400 hover:text-gray-600 focus:outline-none">
                 <i class="fa-solid fa-eye"></i>
               </button>
@@ -432,12 +431,12 @@
 
           <!-- Campos Específicos para el Profesional / Proveedor de Servicio (Dinamizados vía JS) -->
           <div id="tech-fields" class="hidden space-y-4 pt-3 border-t border-gray-100 animate-fade-in">
-            <h3 class="text-xs font-extrabold text-blue-600 uppercase tracking-wide">Detalles de tu Servicio</h3>
+            <h3 class="text-xs font-extrabold text-red-600 uppercase tracking-wide">Detalles de tu Servicio</h3>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Categoría principal</label>
-                <select id="reg-tech-category" class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 text-gray-600">
+                <select id="reg-tech-category" class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 text-gray-600">
                   <option value="albanileria">Albañilería</option>
                   <option value="tapiceria">Tapicería</option>
                   <option value="carpinteria">Carpintería/Madera</option>
@@ -447,7 +446,7 @@
               </div>
               <div>
                 <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Especialidad corta</label>
-                <input type="text" id="reg-tech-specialty" placeholder="Ej: Especialista en Porcelanatos" class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
+                <input type="text" id="reg-tech-specialty" placeholder="Ej: Especialista en Porcelanatos" class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
               </div>
             </div>
 
@@ -455,8 +454,8 @@
               <div class="md:col-span-2">
                 <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Tarifa estimada ($)</label>
                 <div class="flex space-x-2">
-                  <input type="number" id="reg-tech-price" placeholder="Monto en pesos" class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
-                  <select id="reg-tech-price-unit" class="px-3 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 text-gray-600">
+                  <input type="number" id="reg-tech-price" placeholder="Monto en pesos" class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
+                  <select id="reg-tech-price-unit" class="px-3 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 text-gray-600">
                     <option value="hora">/ hora</option>
                     <option value="trabajo">/ trabajo</option>
                   </select>
@@ -464,18 +463,18 @@
               </div>
               <div>
                 <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Experiencia</label>
-                <input type="text" id="reg-tech-exp" placeholder="Ej: 5 años" class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
+                <input type="text" id="reg-tech-exp" placeholder="Ej: 5 años" class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
               </div>
             </div>
 
             <div>
               <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Zona de Cobertura / Barrio</label>
-              <input type="text" id="reg-tech-location" placeholder="Ej: Belgrano, CABA" class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
+              <input type="text" id="reg-tech-location" placeholder="Ej: Belgrano, CABA" class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
             </div>
 
             <div>
               <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Breve Biografía / Presentación</label>
-              <textarea id="reg-tech-bio" rows="3" placeholder="Describe brevemente tu experiencia, materiales que usas y cómo trabajas para atraer clientes..." class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"></textarea>
+              <textarea id="reg-tech-bio" rows="3" placeholder="Describe brevemente tu experiencia, materiales que usas y cómo trabajas para atraer clientes..." class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500"></textarea>
             </div>
           </div>
 
@@ -497,13 +496,13 @@
       <!-- Ficha del Usuario Logueado (Simulado) -->
       <div class="bg-white border border-gray-100 rounded-2xl p-5 flex items-center justify-between shadow-sm">
         <div class="flex items-center space-x-4">
-          <div id="user-avatar" class="w-14 h-14 rounded-full bg-blue-600 text-white font-extrabold text-lg flex items-center justify-center shadow-md">
+          <div id="user-avatar" class="w-14 h-14 rounded-full bg-red-600 text-white font-extrabold text-lg flex items-center justify-center shadow-md">
             CL
           </div>
           <div>
             <h2 id="user-name" class="text-lg font-bold text-gray-950">Carlos López</h2>
             <p id="user-email" class="text-xs text-gray-400">carlos.lopez@example.com</p>
-            <span id="user-role-badge" class="bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full mt-1.5 inline-block">Cliente</span>
+            <span id="user-role-badge" class="bg-red-50 text-red-600 text-[10px] font-bold px-2 py-0.5 rounded-full mt-1.5 inline-block">Cliente</span>
           </div>
         </div>
         
@@ -557,24 +556,24 @@
   <!-- ================= NAVEGACIÓN INFERIOR (Solo en Pantallas Móviles) ================= -->
   <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 glass-nav shadow-lg flex justify-around items-center px-4 pt-2.5 pb-2 safe-bottom">
     <!-- Opción Inicio -->
-    <a href="#" data-target="inicio" class="bottom-nav-item btn-touch text-blue-600 flex flex-col items-center justify-center w-16 text-center select-none">
+    <a href="#" data-target="inicio" class="bottom-nav-item btn-touch text-red-600 flex flex-col items-center justify-center w-16 text-center select-none">
       <i class="fa-solid fa-house text-lg"></i>
       <span class="text-[9px] font-bold mt-1">Inicio</span>
-      <span class="nav-dot w-1.5 h-1.5 bg-blue-600 rounded-full mt-0.5 transition-transform duration-200 scale-100"></span>
+      <span class="nav-dot w-1.5 h-1.5 bg-red-600 rounded-full mt-0.5 transition-transform duration-200 scale-100"></span>
     </a>
 
     <!-- Opción Categorías -->
     <a href="#" data-target="categorias" class="bottom-nav-item btn-touch text-gray-400 flex flex-col items-center justify-center w-16 text-center select-none">
       <i class="fa-solid fa-border-all text-lg"></i>
       <span class="text-[9px] font-bold mt-1">Categorías</span>
-      <span class="nav-dot w-1.5 h-1.5 bg-blue-600 rounded-full mt-0.5 transition-transform duration-200 scale-0"></span>
+      <span class="nav-dot w-1.5 h-1.5 bg-red-600 rounded-full mt-0.5 transition-transform duration-200 scale-0"></span>
     </a>
 
     <!-- Opción Perfil / Autenticación -->
     <a href="#" data-target="perfil" class="bottom-nav-item btn-touch text-gray-400 flex flex-col items-center justify-center w-16 text-center select-none">
       <i class="fa-solid fa-user text-lg"></i>
       <span class="text-[9px] font-bold mt-1">Mi Cuenta</span>
-      <span class="nav-dot w-1.5 h-1.5 bg-blue-600 rounded-full mt-0.5 transition-transform duration-200 scale-0"></span>
+      <span class="nav-dot w-1.5 h-1.5 bg-red-600 rounded-full mt-0.5 transition-transform duration-200 scale-0"></span>
     </a>
   </nav>
 
@@ -598,6 +597,6 @@
   </div>
 
   <!-- Carga del archivo JavaScript de la aplicación -->
-  <script src="app.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>
